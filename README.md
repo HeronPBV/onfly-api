@@ -1,66 +1,365 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Onfly RESTful API - Gerenciamento de despesas
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+![GitHub repo size](https://img.shields.io/github/repo-size/HeronPBV/onfly-api?logo=github)
+![Laravel](https://img.shields.io/badge/Laravel-11.23.5-c2363a?style=flat&logo=laravel)
 
-## About Laravel
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Sobre o projeto e seu desenvolvimento
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+API RESTful desenvolvida em Laravel para o gerenciamento eficiente de despesas. 💵
+<br>O projeto é parte do teste técnico para o cargo de Desenvolvedor PHP no time da Onfly, sendo esta a sua única função: demonstrar conhecimento sólido em criação de API's RESTful com Laravel.
+<br>Este projeto segue as melhores práticas de desenvolvimento, garantindo código limpo, escalável e de fácil manutenção.
 
-## Learning Laravel
+### Tecnologias utilizadas
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+<table>
+  <tr>
+    <td>PHP</td>
+    <td>Laravel</td>
+    <td>MySQL</td>
+  </tr>
+  
+  <tr>
+    <td>8.2.18</td>
+    <td>11.23.5</td>
+    <td>8.3.0</td>
+  </tr>
+</table>
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+<br>Autorização e autenticação com o Laravel Sanctum 🔥
+<br>Tradução de textos e mensagens para Pt_br por [lucascudo]([https://google.com](https://github.com/lucascudo/laravel-pt-BR-localization.git))
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### Padrões de projeto
+- Arquitetura MVC (Laravel)
+- PSR4
+- API Rest
+- Clean Code
 
-## Laravel Sponsors
+## Instruções para a execução do projeto
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+### 💻 Pré-requisitos
 
-### Premium Partners
+Antes de começar, verifique se você:
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+- Possui instalado em sua maquina o `Composer`, `Git`, `PHP` e `MySQL`, em versões recentes.
+- Leu cuidadosamente todos os passos de instalação desta documentação.
 
-## Contributing
+### Para instalar e executar o projeto localmente
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+1º - Execute o seguinte comando no seu terminal:
+~~~
+git clone https://github.com/HeronPBV/onfly-api.git
+~~~
 
-## Code of Conduct
+<br>2º - Localize o arquivo onfly-api/.env.example e renomeio para .env, em seguida insira os seus dados de acesso ao MySQL nas linhas:
+~~~
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=api_onfly
+DB_USERNAME=root
+DB_PASSWORD=
+~~~
+Há um arquivo database.sql com o comando para criar o banco de dados api_onfly. Execute-o ou crie o banco manualmente
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+<br>  3° - Execute os seguintes comandos no seu terminal para instalar e testar a aplicação:
+~~~
+composer install
+~~~
+~~~
+php artisan test
+~~~
+Se todos os testes passarem sem problemas, você instalou corretamente e está pronto para prosseguir
 
-## Security Vulnerabilities
+<br> 4º - Execute os seguintes comandos no seu terminal para popular o banco de dados:
+~~~
+php artisan migrate
+~~~
+~~~
+php artisan db:seed
+~~~
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+<br> 5º - Execute os seguintes comandos no seu terminal para popular o banco de dados:
+~~~
+php artisan migrate
+~~~
+~~~
+php artisan db:seed
+~~~
 
-## License
+<br> 6º - Em terminais separados, execute os seguintes comandos:
+~~~
+php artisan serve
+~~~
+~~~
+php artisan queue:work --tries=3
+~~~
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+⚠️ Atenção ⚠️ 
+<br>Qualquer problema com o autoload pode ser resolvido com o seguinte comando:
+~~~
+composer dump
+~~~
+
+E pronto! Seu projeto já está configurado e pronto para testar. Confira os endpoints abaixo!
+<br> Sugiro utilizar alguma ferramenta como o Postman ou o Insomnia para interagir com a aplicação.
+
+
+## Lista dos endpoints e requisições
+
+⚠️ Atenção ⚠️ 
+<br>Por questões de simplificação, todos os endpoints abaixo terão como base o endereço onfly.api/
+<br>Esse endereço pode variar de acordo com o seu ambiente local, se o retorno do comando `php artisan serve` for algo como `Server running on [http://localhost:8000/]` substitua "onfly.api/" por esse endereço ou o presente no retorno do seu comando.
+<br> 
+<br>Não é necessário enviar o header `Accept: application/json` em nenhuma requisição, pois a API possui um middleware que o adiciona automaticamente em todas as requisições, garantindo que todas as respostas serão em formato JSON
+
+* GET: `onfly.api/`
+<br>Home request da API
+~~~
+Retorno: 200 (OK)
+{
+    "API Onfly": "API RESTful, para gerenciamento de despesas e usuários.",
+    "Instrução": "Acesse a documentação para descobrir os endpoints disponíveis",
+    "Documentação": "https://github.com/HeronPBV/onfly-api"
+}
+~~~
+<br>
+
+### Usuário - Registro, Login, Logout
+
+* POST: `onfly.api/api/registrar`
+<br>Registro de novos usuários
+~~~
+Requisição:
+{
+    "nome": "João Silva",
+    "email": "joaosilva@teste-exemplo.org",
+    "senha": "123mudar"
+}
+~~~
+~~~
+Retorno: 201 (Created)
+{
+    "Sucesso": "Usuário registrado e logado com sucesso",
+    "data": {
+        "Token": "5|xfDyiS2x8IVQuJ8778DRPfq0BRAj4fiCzoieR24O612c49fb"
+    }
+}
+~~~
+A rota registra o novo usuário e já retorna um token de login para ser utilizado no Header de autenticação, por exemplo: `Authorization: Bearer 5|xfDyiS2x8IVQuJ8778DRPfq0BRAj4fiCzoieR24O612c49fb`
+<br>É dessa forma que a aplicação sabe se o usuário está autenticado ou não.
+<br>
+
+* POST: `onfly.api/api/login`
+<br>Login de usuários já registrados
+~~~
+Requisição:
+{
+    "email": "joaosilva@teste-exemplo.org",
+    "senha": "123mudar"
+}
+~~~
+~~~
+Retorno: 200 (OK)
+{
+    "Sucesso": "Usuário logado com sucesso",
+    "data": {
+        "Token": "6|OqnKVYLgAvxQQdVgXzEYmlbDkuAwJ9Sdw0OFpfLnfc30327c"
+    }
+}
+~~~
+Da mesma forma, ao informar os dados válidos de um usuário já cadastrado, a aplicação retorna um token de login para ser usado da mesma forma. `Authorization: Bearer 6|OqnKVYLgAvxQQdVgXzEYmlbDkuAwJ9Sdw0OFpfLnfc30327c`
+
+* GET ou POST: `onfly.api/api/logout`
+<br>Logout com invalidação e deleção do token 
+~~~
+Header de requisição:
+Authorization: Bearer 6|OqnKVYLgAvxQQdVgXzEYmlbDkuAwJ9Sdw0OFpfLnfc30327c
+~~~
+É necessário enviar o header de autorização com um token válido, ou a requisição retornará 401 (Unauthorized)
+~~~
+Retorno: 200 (OK)
+{
+    "Sucesso": "Usuário deslogado com sucesso"
+}
+~~~
+
+
+### Despesas - Leitura, Criação, Atualização e Deleção
+
+Todas as requisições que interagem com as despesas são protegidas por autenticação e policies, portanto é necessário sempre enviar o header:
+~~~
+Authorization: Bearer 6|OqnKVYLgAvxQQdVgXzEYmlbDkuAwJ9Sdw0OFpfLnfc30327c
+~~~
+Substituindo o token em questão pelo de um usuário logado, como ensinado nos endpoints anteriores. Por simplificação, não vou incluir na descrição dos endpoints abaixo, mas se o header não estiver incluso a aplicação retornará 401 (Unauthorized)
+
+
+* GET: `onfly.api/api/despesas`
+<br>Consulta de todas as despesas cadastradas
+~~~
+Retorno: 200 (OK)
+{
+    "Sucesso": "Lista de despesas",
+    "data": [
+            {
+                "usuario": {
+                    "nome": "Emílio Estêvão Rosa"
+            },
+                "descricao": "In ducimus porro totam reiciendis magni voluptates ex neque.",
+                "data": "12/03/2018",
+                "tempo_decorrido": "há 6 anos"
+            },
+            {
+                "usuario": {
+                    "nome": "Emílio Estêvão Rosa"
+                },
+                "descricao": "Et voluptatum nihil nam doloremque similique praesentium numquam.",
+                "data": "15/04/2021",
+                "tempo_decorrido": "há 3 anos"
+            },
+            {
+                "usuario": {
+                    "nome": "Heron Boares",
+                    "email": "heronboares@gmail.com"
+                },
+                "descricao": "Eum velit et dolores enim ex qui incidunt.",
+                "valor": "R$ 7.132,00",
+                "data": "31/08/2022",
+                "tempo_decorrido": "há 2 anos"
+            },
+            (...)
+    ]
+}
+~~~
+Repare que alguns dados como o email do usuário e o valor da despesa só são exibidos se aquela despesa específica pertencer ao usuário autenticado.
+
+
+* GET: `onfly.api/api/despesas/{id}`
+<br>Consulta de uma despesa específica (substitua {id} pelo id da despesa)
+~~~
+Retorno: 200 (OK)
+{
+    "Sucesso": "Detalhes da despesa",
+    "data": {
+        "usuario": {
+            "nome": "Heron Boares",
+            "email": "heronboares@gmail.com"
+        },
+        "descricao": "Eum velit et dolores enim ex qui incidunt.",
+        "valor": "R$ 7.132,00",
+        "data": "31/08/2022",
+        "tempo_decorrido": "há 2 anos"
+    }
+}
+~~~
+Só é possível consultar os detalhes de uma despesa pertencente ao usuário autenticado. Tentativas de consultar despesas de outros usuários retornam 403 (Forbidden)
+
+
+* POST: `onfly.api/api/despesas/`
+<br>Cadastro de novas despesas
+~~~
+Requisição:
+{
+    "descricao": "aaaaaaaaaaaaaaa",
+    "data": "20-09-2024",
+    "valor": 100
+}
+~~~
+~~~
+Retorno: 200 (OK)
+{
+    "Sucesso": "Despesa criada com sucesso",
+    "data": {
+        "usuario": {
+            "nome": "Heron Boares",
+            "email": "heronboares@gmail.com"
+        },
+        "descricao": "aaaaaaaaaaaaaaa",
+        "valor": "R$ 100,00",
+        "data": "20/09/2024",
+        "tempo_decorrido": "há 3 dias"
+    }
+}
+~~~
+Os dados precisam ser inseridos como estão descritos. Todos os campos estão devidamente validados: descrição com menos de 191 caracteres, data não pode ser futuro, etc.
+<br> Nesse momento também é adicionado um job de notification/mail na fila de processamento assíncrono, para que seja enviado um email de notificação para o usuário cadastrado sem aumentar o tempo de resposta.
+
+
+* PUT: `onfly.api/api/despesas/{id}`
+<br>Atualização de uma despesa já existente (substitua {id} pelo id da despesa)
+~~~
+Requisição:
+{
+    "descricao": "aaaaaaaaaaaaaaa",
+    "data": "20-09-2024",
+    "valor": 1000
+}
+~~~
+~~~
+Retorno: 200 (OK)
+{
+    "Sucesso": "Despesa atualizada com sucesso",
+    "data": {
+        "usuario": {
+            "nome": "Heron Boares",
+            "email": "heronboares@gmail.com"
+        },
+        "descricao": "aaaaaaaaaaaaaaa",
+        "valor": "R$ 1.000,00",
+        "data": "20/09/2024",
+        "tempo_decorrido": "há 3 dias"
+    }
+}
+~~~
+Os dados precisam ser inseridos como estão descritos, também é feita a válidação e não é possível atualizar uma despesa de outro usuário, o que retorna 403 (Forbidden).
+
+
+
+
+* DELETE: `onfly.api/api/despesas/{id}`
+<br>Deleção de uma despesa (substitua {id} pelo id da despesa)
+~~~
+Retorno: 200 (OK)
+{
+    "Sucesso": "Despesa deletada com sucesso!"
+}
+~~~
+Não é possível deletar uma despesa de outro usuário, o que retorna 403 (Forbidden).
+
+<br><br>
+⚠️ Atenção ⚠️
+<br>Qualquer requisição inválida ou que infringir alguma regra de negócio receberá uma resposta com status code 422 (Unprocessable Content) contendo o motivo da requisição não ser válida e instruções do que fazer.
+<br>Exemplos:
+~~~
+{
+    "message": "O campo descricao é obrigatório.",
+    "errors": {
+        "descricao": [
+            "O campo descricao é obrigatório."
+        ]
+    }
+}
+~~~
+~~~
+{
+    "message": "O campo data deve ser uma data anterior ou igual a today.",
+    "errors": {
+        "data": [
+            "O campo data deve ser uma data anterior ou igual a today."
+        ]
+    }
+}
+~~~
+
+~~~
+{
+    "message": "O campo descricao não pode ser superior a 191 caracteres.",
+    "errors": {
+        "descricao": [
+            "O campo descricao não pode ser superior a 191 caracteres."
+        ]
+    }
+}
+~~~
+
+Entre outras. Há diversas validações para garantir que só sejam processadas requisições que façam sentido.
