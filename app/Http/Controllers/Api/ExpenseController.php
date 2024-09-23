@@ -8,8 +8,9 @@ use App\ApiResponseTrait;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use App\Http\Controllers\Controller;
-use App\Http\Resources\ExpenseResource;
 use App\Http\Requests\ExpenseRequest;
+use App\Http\Resources\ExpenseResource;
+use App\Notifications\NewExpenseNotification;
 
 class ExpenseController extends Controller
 {
@@ -34,7 +35,7 @@ class ExpenseController extends Controller
             'value' => $validData['valor']
         ]);
 
-        //$this->notifyUser($expense);
+        $this->notifyUser($expense);
 
         return $this->successResponse('Despesa criada com sucesso', new ExpenseResource($expense), 201); //Created
     }
@@ -79,10 +80,10 @@ class ExpenseController extends Controller
         return $this->errorResponse('A despesa não foi deletada', 500); //Internal Server Error
     }
 
-    // private function notifyUser(Expense $despesa)
-    // {
-    //     $user = User::find($despesa->user_id);
-    //     $user->notify(new NewExpenseNotification($user, $despesa));
-    // }
+    private function notifyUser(Expense $despesa)
+    {
+        $user = User::find($despesa->user_id);
+        $user->notify(new NewExpenseNotification($user, $despesa));
+    }
 
 }
