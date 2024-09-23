@@ -67,6 +67,9 @@ Há um arquivo database.sql com o comando para criar o banco de dados api_onfly.
 composer install
 ~~~
 ~~~
+php artisan key:generate
+~~~
+~~~
 php artisan test
 ~~~
 Se todos os testes passarem sem problemas, você instalou corretamente e está pronto para prosseguir
@@ -79,15 +82,7 @@ php artisan migrate
 php artisan db:seed
 ~~~
 
-<br> 5º - Execute os seguintes comandos no seu terminal para popular o banco de dados:
-~~~
-php artisan migrate
-~~~
-~~~
-php artisan db:seed
-~~~
-
-<br> 6º - Em terminais separados, execute os seguintes comandos:
+<br> 5º - Em terminais separados, execute os seguintes comandos:
 ~~~
 php artisan serve
 ~~~
