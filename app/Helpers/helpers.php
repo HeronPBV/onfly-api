@@ -2,6 +2,8 @@
 
 use Carbon\Carbon;
 
+define('DOC', 'https://github.com/HeronPBV/onfly-api');
+
 if (!function_exists('formatDate')) {
     function formatDate(string $date): string
     {

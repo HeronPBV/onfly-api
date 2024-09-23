@@ -6,8 +6,9 @@ Route::get('/', function () {
 
     $data = [
 
-        'API Onfly' => 'Para conhecer os endpoints disponíveis, consulte a documentação',
-        'Documentação' => 'https://www.heronboares.com.br'
+        "API Onfly"=> "API RESTful, para gerenciamento de despesas e usuários.",
+        "Instrução"=> "Acesse a documentação para descobrir os endpoints disponíveis",
+        'Documentação' => DOC
 
     ];
     return response()->json($data, 200);
