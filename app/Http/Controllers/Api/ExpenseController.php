@@ -17,7 +17,7 @@ class ExpenseController extends Controller
 
     public function index()
     {
-        // $this->authorize('index', Expense::class);
+        $this->authorize('index', Expense::class);
 
         $expense = Expense::with('user')->get();
         return $this->successResponse('Lista de despesas', ExpenseResource::collection($expense));
@@ -42,7 +42,7 @@ class ExpenseController extends Controller
     public function show(int $id)
     {
         $expense = Expense::findOrFail($id);
-        //$this->authorize('show', $expense);
+        $this->authorize('show', $expense);
         return $this->successResponse('Detalhes da despesa', new ExpenseResource($expense));
     }
 
@@ -68,7 +68,7 @@ class ExpenseController extends Controller
     public function destroy(int $id)
     {
         $expense = Expense::findOrFail($id);
-        // $this->authorize('destroy', $expense);
+        $this->authorize('destroy', $expense);
 
         $deleted = $expense->delete();
 

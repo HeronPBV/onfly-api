@@ -15,7 +15,6 @@ class ExpenseResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        // dd($this);
         return [
             'usuario' => $this->formatUser($request),
             'descricao' => $this->description,
@@ -29,13 +28,13 @@ class ExpenseResource extends JsonResource
     {
         return [
             'nome' => $this->user->name,
-            'email' => $this->user->email,
+            'email' => $this->when($request->user()->can('show', $this->resource), $this->user->email),
         ];
     }
 
-    private function formatValueOutput(float $value, Request $request): ?string
+    private function formatValueOutput(float $value, Request $request)
     {
-        return formatValue($value);
+        return $this->when($request->user()->can('show', $this->resource), formatValue($value));
     }
 
     private function getTimeElapsed(): string

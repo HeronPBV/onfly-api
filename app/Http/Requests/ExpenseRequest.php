@@ -16,12 +16,13 @@ class ExpenseRequest extends FormRequest
     {
         if ($this->isMethod('post')) {
 
-            return true; //return $this->user()->can('store', Expense::class);
+            return $this->user()->can('store', Expense::class);
 
         } elseif ($this->isMethod('put')) {
 
-            // $expense = $this->route('expense');
-            return true; // return $this->user()->can('update', $expense);
+            $expense_id = $this->route('despesa');
+            $expense = Expense::findOrFail($expense_id);
+            return $this->user()->can('update', $expense);
 
         }
 
@@ -62,7 +63,7 @@ class ExpenseRequest extends FormRequest
             } elseif($user_id != $this->user()->id){
                 $validator->errors()->add(
                     'usuario',
-                    'Não é possível atualizar a despesa trocando o usuário.'
+                    'Não é possível atualizar uma despesa trocando o usuário ou criar uma despesa para outro usuário.'
                 );
             }
 
