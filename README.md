@@ -27,7 +27,7 @@ API RESTful desenvolvida em Laravel para o gerenciamento eficiente de despesas. 
   </tr>
 </table>
 
-<br>Autorização e autenticação com o Laravel Sanctum 🔥
+<br>Autorização e autenticação com Laravel Sanctum 🔥
 <br>Tradução de textos e mensagens para Pt_br por [lucascudo]([https://google.com](https://github.com/lucascudo/laravel-pt-BR-localization.git))
 
 ### Padrões de projeto
@@ -101,6 +101,10 @@ E pronto! Seu projeto já está configurado e pronto para testar. Confira os end
 
 
 ## Lista dos endpoints e requisições
+
+
+![Lista de endpoints](https://github.com/user-attachments/assets/72ebd0d2-3362-4488-ba62-3c025b31eaed)
+<br>Os endpoints acima serão todos abordados de forma detalhada mais abaixo
 
 ⚠️ Atenção ⚠️ 
 <br>Por questões de simplificação, todos os endpoints abaixo terão como base o endereço onfly.api/
@@ -278,6 +282,7 @@ Retorno: 200 (OK)
 ~~~
 Os dados precisam ser inseridos como estão descritos. Todos os campos estão devidamente validados: descrição com menos de 191 caracteres, data não pode ser futuro, etc.
 <br> Nesse momento também é adicionado um job de notification/mail na fila de processamento assíncrono, para que seja enviado um email de notificação para o usuário cadastrado sem aumentar o tempo de resposta.
+<br> Veja a seção "Sobre o envio de e-mails" mais abaixo para ter mais detalhes.
 
 
 * PUT: `onfly.api/api/despesas/{id}`
@@ -358,3 +363,28 @@ Não é possível deletar uma despesa de outro usuário, o que retorna 403 (Forb
 ~~~
 
 Entre outras. Há diversas validações para garantir que só sejam processadas requisições que façam sentido.
+
+
+## Sobre o envio de e-mails
+
+Eu substitui o e-mail padrão do Laravel por um mais simples, mas com maior compatibilidade entre os clients de e-mail. Observe a comparação entre as compatibilidades segundo o Mailtrap.
+<br>
+![Comparação de compatibilidade entre os emails](https://github.com/user-attachments/assets/0bc5cd57-a140-4677-8a2f-8bfe1a056fb6)
+Sendo o da esquerda o e-mail que eu escrevi e o da direita o padrão do Laravel
+<br>
+<br> É válido ressaltar que os pequenos problemas de compatibilidade restantes são com versões muito antigas ou com clients menos utilizados. Os dois maiores clients, Gmail e Outlook, exibem perfeitamente o e-mail, como pode ser visto abaixo:
+
+<br>
+
+- Gmail
+  
+![E-mail de nova despesa visto no gmail](https://github.com/user-attachments/assets/d39c2d8b-a306-4339-8d73-38fe8da9292d)
+
+<br>
+
+- Outlook
+  
+![E-mail de nova despesa visto no Outlook](https://github.com/user-attachments/assets/dedc504c-7cd9-4d27-b8f6-cfa9f55ee80a)
+
+
+<br><br> Outro ponto importante a se mencionar é que os dados de e-mail presentes no .env.example são reais, para que o sistema seja efetivamente capaz de enviar e-mails e ser testado, no entanto, é de uma conta com um limite de armazenamento ínfimo em comparação com as capacidades do servidor, podendo enviar e armazenar somente algumas centenas de e-mails (mais do que o suficiente para testes), não constituindo, portanto, uma falha de segurança significativa.
