@@ -39,13 +39,13 @@ class NewExpenseNotification extends Notification implements ShouldQueue
     {
         return (new MailMessage)
                     ->subject('Onfly API - Nova Despesa Cadastrada')
-                    ->greeting('Olá, ' . $this->user->name . "!")
-                    ->line('Uma nova despesa foi cadastrada com sucesso em seu nome: ')
-                    ->line($this->user->name . " - " . $this->user->email)
-                    ->line('Descrição: ' . $this->expense->description)
-                    ->line('Valor: ' . $this->expense->value)
-                    ->line('Data da despesa: ' . Carbon::parse($this->expense->date)->format('d/m/Y'))
-                    ->salutation('Se você não reconhece essa operação, entre em contato com o nosso suporte.');
+                    ->view('mails.new_expense_mail', [
+                        'name' => $this->user->name,
+                        'email' => $this->user->email,
+                        'description' => $this->expense->description,
+                        'value' => formatValue($this->expense->value),
+                        'date' => formatDate($this->expense->date)
+                    ]);
     }
 
     /**
